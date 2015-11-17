@@ -39,7 +39,7 @@ public class PFQRCode: NSObject {
      - Parameter codeSize: 二维码的尺寸
      - Returns: 二维码
      */
-    public func create(string: String, codeSize size: CGFloat) -> UIImage {
+    public class func create(string: String, codeSize size: CGFloat) -> UIImage {
         return PFQRCode.create(string, codeSize: size, imageNamed: nil)
     }
     
@@ -108,9 +108,9 @@ public class PFQRCode: NSObject {
             
             //将定制图绘制于二维码中间
             QRCode.drawInRect(rect)
-            let size = CGSizeMake(rect.size.width * 0.25, rect.size.height * 0.25)
-            let x = (rect.size.width - size.width) * 0.5
-            let y = (rect.size.height - size.height) * 0.5
+            let size = CGSizeMake(rect.width * 0.25, rect.height * 0.25)
+            let x = (rect.width - size.width) * 0.5
+            let y = (rect.height - size.height) * 0.5
             iconImage!.drawInRect(CGRectMake(x, y, size.width, size.height))
             
             //生成带图标的二维码
