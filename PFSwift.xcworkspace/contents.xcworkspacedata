@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <Group
+      location = "group:PFSwift"
+      name = "PFSwift">
+      <Group
+         location = "group:Extension"
+         name = "Extension">
+         <FileRef
+            location = "group:PFString.swift">
+         </FileRef>
+         <FileRef
+            location = "group:PFView.swift">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:Framework"
+         name = "Framework">
+         <FileRef
+            location = "group:PFFile.swift">
+         </FileRef>
+         <FileRef
+            location = "group:PFModel.swift">
+         </FileRef>
+         <FileRef
+            location = "group:PFQRCode.swift">
+         </FileRef>
+         <FileRef
+            location = "group:PFTime.swift">
+         </FileRef>
+      </Group>
+   </Group>
+   <FileRef
+      location = "group:Demo/Demo.xcodeproj">
+   </FileRef>
+</Workspace>
