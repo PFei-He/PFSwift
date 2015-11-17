@@ -40,7 +40,7 @@ class RootViewController: UIViewController {
         let fruits = Fruits(JSON: food.fruit[0])
         print(fruits.fruit)
         
-        imageView.image = PFQRCode.create(Person.sharedInstance().code, imageNamed: "Custom Figure.jpg", codeSize: imageView.width)
+        imageView.image = PFQRCode.create(Person.sharedInstance().code, codeSize: imageView.width, imageNamed: "Custom Figure.jpg")
     }
 
     override func didReceiveMemoryWarning() {
