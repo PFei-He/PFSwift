@@ -7,7 +7,7 @@
 //
 //  https://github.com/PFei-He/PFSwift
 //
-//  vesion: 0.0.3
+//  vesion: 0.0.4
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -26,6 +26,8 @@
 //  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
+//
+//  ***** 二维码生成 *****
 //
 
 import UIKit
@@ -80,7 +82,7 @@ public class PFQRCode: NSObject {
         let bitmapRef = CGBitmapContextCreate(nil, size_t(width), size_t(height), 8, 0, cs, CGBitmapInfo(rawValue: CGImageAlphaInfo.None.rawValue).rawValue)
         
         //获取CIContext
-        let context = CIContext(options: nil)
+        let context = CIContext(options: [kCIContextUseSoftwareRenderer: true])
         let bitmap = context.createCGImage(filter!.outputImage!, fromRect: extent)
         CGContextSetInterpolationQuality(bitmapRef, CGInterpolationQuality.None)
         CGContextScaleCTM(bitmapRef, scale, scale)
