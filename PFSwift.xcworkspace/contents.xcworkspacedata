@@ -27,6 +27,9 @@
             location = "group:PFQRCode.swift">
          </FileRef>
          <FileRef
+            location = "group:PFScanner.swift">
+         </FileRef>
+         <FileRef
             location = "group:PFTime.swift">
          </FileRef>
       </Group>
