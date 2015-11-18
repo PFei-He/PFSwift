@@ -69,7 +69,7 @@ public class PFScanner: NSObject, AVCaptureMetadataOutputObjectsDelegate {
      - Parameter view: 添加扫描器的视图
      - Returns: 无
      */
-    func createInView(view: UIView) {
+    public func createInView(view: UIView) {
         
         //实例化摄像头设备
         let device = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
