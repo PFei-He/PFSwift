@@ -13,17 +13,17 @@
 
 说明
 ---
+#### Extension
+* `PFDate` - NSDate扩展
+* `PFString` - String扩展
+* `PFView` - UIView扩展
+
 #### Framework
 * `PFFile` - 实现文件生成和读写功能
 * `PFModel` - JSON模型的基类
 * `PFQRCode` - 利用AVFoundation框架生成二维码
 * `PFScanner` - 扫描器
 * `PFTime` - 实现时间获取和转换功能
-
-#### Extension
-* `PFDate` - NSDate扩展
-* `PFString` - String扩展
-* `PFView` - UIView扩展
 
 安装
 ---
