@@ -8,6 +8,9 @@
          location = "group:Extension"
          name = "Extension">
          <FileRef
+            location = "group:PFDate.swift">
+         </FileRef>
+         <FileRef
             location = "group:PFString.swift">
          </FileRef>
          <FileRef
