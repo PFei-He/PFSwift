@@ -7,14 +7,14 @@ Pod::Spec.new do |s|
   s.author                  = { 'PFei-He' => '498130877@qq.com' }
   s.platform                = :ios, '8.0'
   s.ios.deployment_target   = '8.0'
-  s.source                  = { :git => 'https://github.com/PFei-He/PFSwift.git', :tag => s.version, :submodules => true }
+  s.source                  = { :git => 'https://github.com/PFei-He/PFSwift.git', :tag => s.version }
   s.requires_arc = true
 
   s.subspec 'Extension' do |ss|
-    ss.source_files = 'PFSwift/Extension/PF{Date,String,View}.swift'
+    ss.source_files = 'PFSwift/PF{Date,String,View}.swift'
   end
 
   s.subspec 'Framework' do |ss|
-    ss.source_files = 'PFSwift/Framework/PF{File,Model,QRCode,Scanner,Time}.swift'
+    ss.source_files = 'PFSwift/PF{File,Model,QRCode,Scanner,Time}.swift'
   end
 end

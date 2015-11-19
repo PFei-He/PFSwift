@@ -5,35 +5,35 @@
       location = "group:PFSwift"
       name = "PFSwift">
       <Group
-         location = "group:Extension"
+         location = "container:"
          name = "Extension">
          <FileRef
-            location = "group:PFDate.swift">
+            location = "group:PFSwift/PFDate.swift">
          </FileRef>
          <FileRef
-            location = "group:PFString.swift">
+            location = "group:PFSwift/PFString.swift">
          </FileRef>
          <FileRef
-            location = "group:PFView.swift">
+            location = "group:PFSwift/PFView.swift">
          </FileRef>
       </Group>
       <Group
-         location = "group:Framework"
+         location = "container:"
          name = "Framework">
          <FileRef
-            location = "group:PFFile.swift">
+            location = "group:PFSwift/PFFile.swift">
          </FileRef>
          <FileRef
-            location = "group:PFModel.swift">
+            location = "group:PFSwift/PFModel.swift">
          </FileRef>
          <FileRef
-            location = "group:PFQRCode.swift">
+            location = "group:PFSwift/PFQRCode.swift">
          </FileRef>
          <FileRef
-            location = "group:PFScanner.swift">
+            location = "group:PFSwift/PFScanner.swift">
          </FileRef>
          <FileRef
-            location = "group:PFTime.swift">
+            location = "group:PFSwift/PFTime.swift">
          </FileRef>
       </Group>
    </Group>
