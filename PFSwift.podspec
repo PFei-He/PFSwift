@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name                    = 'PFSwift'
-  s.version                 = '0.0.5'
+  s.version                 = '0.0.6'
   s.summary                 = '对系统API进行简单封装，实现常用功能'
   s.homepage                = 'https://github.com/PFei-He/PFSwift'
   s.license                 = { :type => 'MIT', :file => 'LICENSE' }
@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   s.subspec 'Extension' do |ss|
-    ss.source_files = 'PFSwift/Extension/PF{String,View}.swift'
+    ss.source_files = 'PFSwift/Extension/PF{Date,String,View}.swift'
   end
 
   s.subspec 'Framework' do |ss|
