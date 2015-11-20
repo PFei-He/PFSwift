@@ -7,7 +7,7 @@
 //
 //  https://github.com/PFei-He/PFSwift
 //
-//  vesion: 0.0.6
+//  vesion: 0.0.7
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -63,6 +63,18 @@ public class PFScanner: NSObject, AVCaptureMetadataOutputObjectsDelegate {
     ///预览
     private var previewLayer:   AVCaptureVideoPreviewLayer!
     
+    // MARK: - Life Cycle
+    
+    //初始化
+    public override init() {
+        super.init()
+        
+        //设置输出（Metadata元数据）
+        output = AVCaptureMetadataOutput()
+    }
+    
+    // MARK: - Public Methods
+
     /**
      创建扫描器
      - Note: 无
@@ -77,14 +89,13 @@ public class PFScanner: NSObject, AVCaptureMetadataOutputObjectsDelegate {
         //设置输入，把摄像头作为输入设备
         let input = try? AVCaptureDeviceInput(device: device)
         
-        //设置输出（Metadata元数据）
-        output = AVCaptureMetadataOutput()
-        
         //设置输出的代理
         output.setMetadataObjectsDelegate(self, queue: dispatch_get_main_queue())
         
         //拍摄会话
         session = AVCaptureSession()
+        
+        //设置拍摄质量
         session.sessionPreset = AVCaptureSessionPresetHigh
         
         //添加输入

@@ -4,30 +4,38 @@
    <Group
       location = "group:PFSwift"
       name = "PFSwift">
-      <FileRef
-         location = "group:PFDate.swift">
-      </FileRef>
-      <FileRef
-         location = "group:PFFile.swift">
-      </FileRef>
-      <FileRef
-         location = "group:PFModel.swift">
-      </FileRef>
-      <FileRef
-         location = "group:PFQRCode.swift">
-      </FileRef>
-      <FileRef
-         location = "group:PFScanner.swift">
-      </FileRef>
-      <FileRef
-         location = "group:PFString.swift">
-      </FileRef>
-      <FileRef
-         location = "group:PFTime.swift">
-      </FileRef>
-      <FileRef
-         location = "group:PFView.swift">
-      </FileRef>
+      <Group
+         location = "container:"
+         name = "Extension">
+         <FileRef
+            location = "group:PFSwift/PFDate.swift">
+         </FileRef>
+         <FileRef
+            location = "group:PFSwift/PFString.swift">
+         </FileRef>
+         <FileRef
+            location = "group:PFSwift/PFView.swift">
+         </FileRef>
+      </Group>
+      <Group
+         location = "container:"
+         name = "Framework">
+         <FileRef
+            location = "group:PFSwift/PFFile.swift">
+         </FileRef>
+         <FileRef
+            location = "group:PFSwift/PFModel.swift">
+         </FileRef>
+         <FileRef
+            location = "group:PFSwift/PFQRCode.swift">
+         </FileRef>
+         <FileRef
+            location = "group:PFSwift/PFScanner.swift">
+         </FileRef>
+         <FileRef
+            location = "group:PFSwift/PFTime.swift">
+         </FileRef>
+      </Group>
    </Group>
    <FileRef
       location = "group:Demo/Demo.xcodeproj">

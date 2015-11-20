@@ -7,7 +7,7 @@
 //
 //  https://github.com/PFei-He/PFSwift
 //
-//  vesion: 0.0.6
+//  vesion: 0.0.7
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -41,11 +41,10 @@ public class PFFile: NSObject {
      - Returns: 无
      */
     public class func createFile(fileName: String) {
-        let paths = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)
-        let path = NSURL(fileURLWithPath: paths[0]).URLByAppendingPathComponent(fileName)
+        let path = PFFile.path(fileName)
         let manager = NSFileManager.defaultManager()
-        if (!manager.fileExistsAtPath(path.path!)) {//如果文件不存在则创建文件
-            manager.createFileAtPath(path.path!, contents:nil, attributes:nil)
+        if !manager.fileExistsAtPath(path) {//如果文件不存在则创建文件
+            manager.createFileAtPath(path, contents:nil, attributes:nil)
         }
     }
     
@@ -56,9 +55,7 @@ public class PFFile: NSObject {
      - Returns: 文件中的数据
      */
     public class func readFile(fileName: String) -> Dictionary<String, AnyObject> {
-        let paths = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)
-        let path = NSURL(fileURLWithPath: paths[0]).URLByAppendingPathComponent(fileName)
-        return NSDictionary(contentsOfFile: path.path!) as! Dictionary<String, AnyObject>
+        return NSDictionary(contentsOfFile: PFFile.path(fileName)) as! Dictionary<String, AnyObject>
     }
     
     /**
@@ -82,8 +79,13 @@ public class PFFile: NSObject {
      - Returns: 写入结果
      */
     public class func writeToFile(fileName: String, params: Dictionary<String, AnyObject>) -> Bool {
+        return (params as NSDictionary).writeToFile(PFFile.path(fileName), atomically: true)
+    }
+    
+    ///文件路径
+    private class func path(fileName: String) -> String {
         let paths = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)
         let path = NSURL(fileURLWithPath: paths[0]).URLByAppendingPathComponent(fileName)
-        return (params as NSDictionary).writeToFile(path.path!, atomically: true)
+        return path.path!
     }
 }

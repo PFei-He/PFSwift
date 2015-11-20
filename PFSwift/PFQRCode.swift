@@ -7,7 +7,7 @@
 //
 //  https://github.com/PFei-He/PFSwift
 //
-//  vesion: 0.0.6
+//  vesion: 0.0.7
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -100,20 +100,20 @@ public class PFQRCode: NSObject {
             let iconImage = UIImage(named: name!)
             
             //获取二维码的尺寸
-            let rect = CGRectMake(0,
-                0,
-                UIImage(CIImage: filter!.outputImage!.imageByApplyingTransform(CGAffineTransformMakeScale(20, 20))).size.width,
-                UIImage(CIImage: filter!.outputImage!.imageByApplyingTransform(CGAffineTransformMakeScale(20, 20))).size.height)
+            let size1 = UIImage(CIImage: filter!.outputImage!.imageByApplyingTransform(CGAffineTransformMakeScale(20, 20))).size
+            
+            //获取二维码的标尺
+            let rect = CGRectMake(0, 0, size1.width, size1.height)
             
             //开始绘图
             UIGraphicsBeginImageContext(rect.size)
             
             //将定制图绘制于二维码中间
             QRCode.drawInRect(rect)
-            let size = CGSizeMake(rect.width * 0.25, rect.height * 0.25)
-            let x = (rect.width - size.width) * 0.5
-            let y = (rect.height - size.height) * 0.5
-            iconImage!.drawInRect(CGRectMake(x, y, size.width, size.height))
+            let size2 = CGSizeMake(rect.width * 0.25, rect.height * 0.25)
+            let x = (rect.width - size2.width) * 0.5
+            let y = (rect.height - size2.height) * 0.5
+            iconImage!.drawInRect(CGRectMake(x, y, size2.width, size2.height))
             
             //生成带图标的二维码
             let iconQRCode = UIGraphicsGetImageFromCurrentImageContext()
