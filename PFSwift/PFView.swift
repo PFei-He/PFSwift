@@ -7,7 +7,7 @@
 //
 //  https://github.com/PFei-He/PFSwift
 //
-//  vesion: 0.0.8
+//  vesion: 0.0.9
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -34,7 +34,7 @@ import UIKit
 
 extension UIView {
     
-    // MARK: -
+    // MARK: - ORIGIN
     
     ///坐标
     public var origin: CGPoint {
@@ -69,7 +69,7 @@ extension UIView {
         }
     }
     
-    // MARK: -
+    // MARK: - SIZE
     
     ///尺寸
     public var size: CGSize {
@@ -104,7 +104,18 @@ extension UIView {
         }
     }
     
-    //MARK: -
+    //MARK: - POSITION
+    
+    ///方位
+    public var position: CGPoint {
+        get {
+            return frame.origin
+        } set {
+            var frame = self.frame
+            frame.origin = newValue
+            self.frame = frame
+        }
+    }
     
     ///上边缘
     public var top: CGFloat {
@@ -150,7 +161,7 @@ extension UIView {
         }
     }
     
-    // MARK: -
+    // MARK: - CENTER
     
     ///中心点
     public var boundsCenter: CGPoint {
@@ -181,15 +192,26 @@ extension UIView {
         }
     }
     
-    // MARK: -
+    // MARK: - OFFSET
     
-    ///
-    public var position: CGPoint {
+    ///位移
+    public var offset: CGPoint {
         get {
-            return frame.origin
+            var point = CGPointZero
+            var view = self
+            point.x += view.frame.origin.x
+            point.y += view.frame.origin.y
+            view = view.superview!
+            return point
         } set {
+            var view = self
+            var point = newValue
+            point.x += view.superview!.frame.origin.x
+            point.y += view.superview!.frame.origin.y
+            view = view.superview!
+            
             var frame = self.frame
-            frame.origin = newValue
+            frame.origin = point
             self.frame = frame
         }
     }

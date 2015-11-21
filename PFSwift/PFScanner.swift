@@ -7,7 +7,7 @@
 //
 //  https://github.com/PFei-He/PFSwift
 //
-//  vesion: 0.0.8
+//  vesion: 0.0.9
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -48,11 +48,15 @@ public class PFScanner: NSObject, AVCaptureMetadataOutputObjectsDelegate {
     
     /* 详见AVCaptureOutput类的rectOfInterest */
     ///扫描器的工作区域
-    public var rectOfInterest:  CGRect? {
-        didSet {
-            output.rectOfInterest = rectOfInterest!
+    public var rectOfInterest:  CGRect {
+        get {
+            return _rectOfInterest
+        } set {
+            _rectOfInterest = newValue
         }
     }
+    private var _rectOfInterest: CGRect!
+    
     ///代理
     weak public var delegate:   PFScannerDelegate?
     

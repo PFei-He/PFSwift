@@ -7,7 +7,7 @@
 //
 //  https://github.com/PFei-He/PFSwift
 //
-//  vesion: 0.0.8
+//  vesion: 0.0.9
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -40,18 +40,26 @@ public class PFModel: NSObject, NSXMLParserDelegate {
     private var string = NSMutableString()
 
     ///JSON数据
-    public var JSON: AnyObject? {
-        didSet {
-            parseJSON(JSON)
+    public var JSON: AnyObject {
+        get {
+            return _JSON
+        } set {
+            _JSON = newValue
+            parseJSON(newValue)
         }
     }
+    private var _JSON: AnyObject!
     
     ///XML数据
-    public var XML: AnyObject? {
-        didSet {
-            parseXML(XML)
+    public var XML: AnyObject {
+        get {
+            return _XML
+        } set {
+            _XML = newValue
+            parseXML(newValue)
         }
     }
+    private var _XML: AnyObject!
     
     // MARK: - Life Cycle
     
@@ -61,7 +69,7 @@ public class PFModel: NSObject, NSXMLParserDelegate {
      - Parameter JSON: JSON数据
      - Returns: Model实例
      */
-    public convenience init(JSON: AnyObject?) {
+    public convenience init(JSON: AnyObject) {
         self.init()
         self.JSON = JSON
     }
@@ -72,7 +80,7 @@ public class PFModel: NSObject, NSXMLParserDelegate {
      - Parameter XML: XML数据
      - Returns: Model实例
      */
-    public convenience init(XML: AnyObject?) {
+    public convenience init(XML: AnyObject) {
         self.init()
         self.XML = XML
     }
@@ -121,7 +129,7 @@ public class PFModel: NSObject, NSXMLParserDelegate {
     
     //获取未被声明的对象
     public override func setValue(value: AnyObject?, forUndefinedKey key: String) {
-        print("**Class->"+String(classForCoder), "UndefinedKey->"+key, "Type->"+String(value?.classForCoder), "Value->"+String(value)+"**")
+        print("***Class->"+String(classForCoder), "UndefinedKey->"+key, "Type->"+String(value?.classForCoder), "Value->"+String(value)+"***")
     }
 
     // MARK: - NSXMLParserDelegate Methods
@@ -135,8 +143,8 @@ public class PFModel: NSObject, NSXMLParserDelegate {
         let childDict = NSMutableDictionary()
         childDict.addEntriesFromDictionary(attributeDict)
         
+        //将节点转为字典的值
         let value = parentDict[elementName]
-        
         if value != nil {
             var array: NSMutableArray
             if value is NSMutableArray {
