@@ -7,7 +7,7 @@
 //
 //  https://github.com/PFei-He/PFSwift
 //
-//  vesion: 0.0.7
+//  vesion: 0.0.8
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -41,7 +41,7 @@ public class PFFile: NSObject {
      - Returns: 无
      */
     public class func createFile(fileName: String) {
-        let path = PFFile.path(fileName)
+        let path = readFile(fileName, directory: "document", type: nil) as! String
         let manager = NSFileManager.defaultManager()
         if !manager.fileExistsAtPath(path) {//如果文件不存在则创建文件
             manager.createFileAtPath(path, contents:nil, attributes:nil)
@@ -54,8 +54,8 @@ public class PFFile: NSObject {
      - Parameter fileName: 文件名
      - Returns: 文件中的数据
      */
-    public class func readFile(fileName: String) -> Dictionary<String, AnyObject> {
-        return NSDictionary(contentsOfFile: PFFile.path(fileName)) as! Dictionary<String, AnyObject>
+    public class func readFile(fileName: String) -> NSData {
+        return NSData(contentsOfFile: readFile(fileName, directory: "document", type: nil) as! String)!
     }
     
     /**
@@ -64,11 +64,18 @@ public class PFFile: NSObject {
      - Parameter fileName: 文件名
      - Returns: 文件中的数据
      */
-    public class func readJSON(fileName: String) -> Dictionary<String, AnyObject> {
-        let path = NSBundle.mainBundle().pathForResource(fileName, ofType: "json")
-        let string = try? String(contentsOfFile: path!, encoding: NSUTF8StringEncoding)
-        let data = string?.dataUsingEncoding(NSUTF8StringEncoding)
-        return try! NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableLeaves) as! Dictionary<String, AnyObject>
+    public class func readJSON(fileName: String) -> NSData {
+        return readFile(fileName, directory: "bundle", type: "json") as! NSData
+    }
+    
+    /**
+     读取XML文件
+     - Note: 文件存放于main bundle中
+     - Parameter fileName: 文件名
+     - Returns: 文件中的数据
+     */
+    public class func readXML(fileName: String) -> NSData {
+        return readFile(fileName, directory: "bundle", type: "xml") as! NSData
     }
     
     /**
@@ -79,13 +86,19 @@ public class PFFile: NSObject {
      - Returns: 写入结果
      */
     public class func writeToFile(fileName: String, params: Dictionary<String, AnyObject>) -> Bool {
-        return (params as NSDictionary).writeToFile(PFFile.path(fileName), atomically: true)
+        return (params as NSDictionary).writeToFile(PFFile.readFile(fileName, directory: "document", type: nil) as! String, atomically: true)
     }
     
-    ///文件路径
-    private class func path(fileName: String) -> String {
-        let paths = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)
-        let path = NSURL(fileURLWithPath: paths[0]).URLByAppendingPathComponent(fileName)
-        return path.path!
+    ///读取资源包文件或沙盒文件
+    private class func readFile(fileName: String, directory: String, type: String?) -> AnyObject {
+        if directory == "bundle" {//资源包文件
+            let path = NSBundle.mainBundle().pathForResource(fileName, ofType: type)
+            let string = try? String(contentsOfFile: path!, encoding: NSUTF8StringEncoding)
+            return string!.dataUsingEncoding(NSUTF8StringEncoding)!
+        } else {//沙盒文件
+            let paths = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)
+            let path = NSURL(fileURLWithPath: paths[0]).URLByAppendingPathComponent(fileName)
+            return path.path!
+        }
     }
 }

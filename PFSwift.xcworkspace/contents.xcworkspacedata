@@ -11,6 +11,9 @@
             location = "group:PFSwift/PFDate.swift">
          </FileRef>
          <FileRef
+            location = "group:PFSwift/PFDictionary.swift">
+         </FileRef>
+         <FileRef
             location = "group:PFSwift/PFString.swift">
          </FileRef>
          <FileRef
