@@ -34,12 +34,8 @@ class RootViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        //取出JSON中的对象参数
-        let food = Food(JSON: Person.sharedInstance().food)
-        let fruits = Fruits(JSON: food.fruit[0])
-        print(fruits.fruit)
         
+        //生成二维码
         imageView.image = PFQRCode.create(Person.sharedInstance().code, codeSize: imageView.width, iconNamed: "Custom Figure.jpg")
     }
 

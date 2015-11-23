@@ -186,7 +186,7 @@ public class PFModel: NSObject, NSXMLParserDelegate {
         let childDict = NSMutableDictionary()
         childDict.addEntriesFromDictionary(attributeDict)
         
-        //将节点转为字典的值
+        //将节点转为字典的键值
         let value = parentDict[elementName]
         if value != nil {
             var array: NSMutableArray
