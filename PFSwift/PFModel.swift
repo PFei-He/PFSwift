@@ -7,7 +7,7 @@
 //
 //  https://github.com/PFei-He/PFSwift
 //
-//  vesion: 0.0.9
+//  vesion: 0.1.0
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -127,14 +127,57 @@ public class PFModel: NSObject, NSXMLParserDelegate {
         }
     }
     
-    //获取未被声明的对象
-    public override func setValue(value: AnyObject?, forUndefinedKey key: String) {
+    // MARK: - Public Methods
+    
+    /**
+     获取未被声明的键值
+     - Note: 无
+     - Parameter value: 值
+     - Parameter key: 键
+     - Returns: 无
+    */
+    override public func setValue(value: AnyObject?, forUndefinedKey key: String) {
         print("***Class->"+String(classForCoder), "UndefinedKey->"+key, "Type->"+String(value?.classForCoder), "Value->"+String(value)+"***")
+    }
+    
+    /**
+     创建JSON
+     - Note: 将键值转化为字典
+     - Parameter 无
+     - Returns: 转化后JSON数据
+     */
+    public func createJSON() -> Dictionary<String, AnyObject> {
+        //获取属性列表
+        var count:UInt32 = 0
+        let list = class_copyPropertyList(classForCoder, &count)
+        var array = Array<String>()
+        if list != nil {
+            for i in 0...(Int(count) - 1) {
+                
+                //获取属性名
+                let key = String(UTF8String: property_getName(list[i]))
+                
+                //将属性放入到数组中
+                if key != nil {
+                    array.append(key!)
+                }
+            }
+        }
+        
+        //释放对象
+        free(list)
+        
+        return dictionaryWithValuesForKeys(array)
     }
 
     // MARK: - NSXMLParserDelegate Methods
     
-    //读取节点头
+    /**
+     读取节点头
+     - Note: NSXMLParser代理方法，已实现，不可重写，否则解析XML无效
+     - Parameter 无
+     - Returns: 无
+     */
     public func parser(parser: NSXMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
         //父节点
         let parentDict = array.lastObject as! NSMutableDictionary
@@ -161,7 +204,12 @@ public class PFModel: NSObject, NSXMLParserDelegate {
         self.array.addObject(childDict)
     }
     
-    //读取节点尾
+    /**
+     读取节点尾
+     - Note: NSXMLParser代理方法，已实现，不可重写，否则解析XML无效
+     - Parameter 无
+     - Returns: 无
+     */
     public func parser(parser: NSXMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         let dictionary = self.array.lastObject as! NSMutableDictionary
         
@@ -173,7 +221,12 @@ public class PFModel: NSObject, NSXMLParserDelegate {
         self.array.removeLastObject()
     }
     
-    //读取节点中的值
+    /**
+     读取节点中的值
+     - Note: NSXMLParser代理方法，已实现，不可重写，否则解析XML无效
+     - Parameter 无
+     - Returns: 无
+     */
     public func parser(parser: NSXMLParser, foundCharacters string: String) {
         self.string.appendString(string)
     }
