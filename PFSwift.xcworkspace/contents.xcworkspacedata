@@ -17,6 +17,9 @@
             location = "group:PFSwift/PFString.swift">
          </FileRef>
          <FileRef
+            location = "group:PFSwift/PFTimer.swift">
+         </FileRef>
+         <FileRef
             location = "group:PFSwift/PFView.swift">
          </FileRef>
       </Group>

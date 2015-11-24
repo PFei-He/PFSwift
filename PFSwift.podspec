@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name                    = 'PFSwift'
-  s.version                 = '0.1.0'
+  s.version                 = '0.1.1'
   s.summary                 = '对系统API进行简单封装，实现常用功能'
   s.homepage                = 'https://github.com/PFei-He/PFSwift'
   s.license                 = { :type => 'MIT', :file => 'LICENSE' }
@@ -8,6 +8,6 @@ Pod::Spec.new do |s|
   s.platform                = :ios, '8.0'
   s.ios.deployment_target   = '8.0'
   s.source                  = { :git => 'https://github.com/PFei-He/PFSwift.git', :tag => s.version }
-  s.source_files            = 'PFSwift/PF{Date,Dictionary,File,Model,QRCode,Scanner,String,Time,View}.swift'
+  s.source_files            = 'PFSwift/PF{Date,Dictionary,File,Model,QRCode,Scanner,String,Time,Timer,View}.swift'
   s.requires_arc            = true
 end

@@ -9,7 +9,7 @@
 
 版本
 ---
-0.1.0
+0.1.1
 
 说明
 ---
@@ -17,6 +17,7 @@
 * `PFDate` - NSDate扩展
 * `PFDictionary` - Dictionary扩展
 * `PFString` - String扩展
+* `PFTimer` - NSTimer扩展
 * `PFView` - UIView扩展
 
 #### Framework

@@ -1,8 +1,8 @@
 //
-//  PFDictionary.swift
+//  PFTimer.swift
 //  PFSwift
 //
-//  Created by PFei_He on 15/11/21.
+//  Created by PFei_He on 15/11/24.
 //  Copyright © 2015年 PF-Lib. All rights reserved.
 //
 //  https://github.com/PFei-He/PFSwift
@@ -27,22 +27,52 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 //
-//  ***** Dictionary扩展 *****
+//  ***** NSTimer扩展 *****
 //
 
 import Foundation
 
-extension Dictionary {
+extension NSTimer {
     
     /**
-     拼接字典
+     暂停计时器
      - Note: 无
-     - Parameter dictionary: 需要拼接的字典
+     - Parameter 无
      - Returns: 无
      */
-    mutating func addEntries<K, V>(dictionary: [K: V]){
-        for (k, v) in dictionary {
-            self.updateValue(v as! Value, forKey: k as! Key)
+    public func pause() {
+        if !valid {//若计时器无效则返回
+            return;
         }
+        //设置计时器运行时间为未来时间，则暂停了计时器
+        fireDate = NSDate.distantFuture()
+    }
+    
+    /**
+     恢复计时器
+     - Note: 无
+     - Parameter 无
+     - Returns: 无
+     */
+    public func resume() {
+        if !valid {//若计时器无效则返回
+            return;
+        }
+        //设置计时器运行时间为当前时间，则立即运行计时器
+        fireDate = NSDate()
+    }
+    
+    /**
+     指定时间间隔后恢复计时器
+     - Note: 无
+     - Parameter timeInterval: 时间间隔
+     - Returns: 无
+     */
+    public func resumeAfterTimeInterval(timeInterval: NSTimeInterval) {
+        if !valid {//若计时器无效则返回
+            return;
+        }
+        //设置计时器运行时间为指定的间隔时长
+        fireDate = NSDate(timeIntervalSinceNow: timeInterval)
     }
 }
