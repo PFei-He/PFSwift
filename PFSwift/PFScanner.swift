@@ -7,7 +7,7 @@
 //
 //  https://github.com/PFei-He/PFSwift
 //
-//  vesion: 0.1.1
+//  vesion: 0.1.2
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -41,7 +41,7 @@ public protocol PFScannerDelegate: NSObjectProtocol {
      - Parameter string: 扫描结果转换成的字符串
      - Returns: 无
      */
-    func scanner(scanner: PFScanner, scanCompletedWithString string: String)
+    func scanner(scanner: PFScanner, captureCompletedWithString string: String)
 }
 
 public class PFScanner: NSObject, AVCaptureMetadataOutputObjectsDelegate {
@@ -150,7 +150,7 @@ public class PFScanner: NSObject, AVCaptureMetadataOutputObjectsDelegate {
         if metadataObjects.count > 0 {
             let object = metadataObjects[0]
             if delegate != nil {
-                delegate?.scanner(self, scanCompletedWithString: object.stringValue)
+                delegate?.scanner(self, captureCompletedWithString: object.stringValue)
             }
         }
     }
