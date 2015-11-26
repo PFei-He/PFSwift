@@ -7,7 +7,7 @@
 //
 //  https://github.com/PFei-He/PFSwift
 //
-//  vesion: 0.1.2
+//  vesion: 0.1.3
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -49,17 +49,27 @@ public class PFFile: NSObject {
     }
     
     /**
-     读取文件
+     读取Dictionary类型文件
      - Note: 文件存放于沙盒中的Documents文件夹中
      - Parameter fileName: 文件名
      - Returns: 文件中的数据
      */
-    public class func readFile(fileName: String) -> NSData {
-        return NSData(contentsOfFile: readFile(fileName, directory: "document", type: nil) as! String)!
+    public class func readDictionary(fileName: String) -> Dictionary<String, AnyObject> {
+        return NSDictionary(contentsOfFile: readFile(fileName, directory: "document", type: nil) as! String)! as! Dictionary<String, AnyObject>
     }
     
     /**
-     读取JSON文件
+     读取String类型文件
+     - Note: 文件存放于沙盒中的Documents文件夹中
+     - Parameter fileName: 文件名
+     - Returns: 文件中的数据
+     */
+    public class func readString(fileName: String) -> String {
+        return try! String(contentsOfFile: readFile(fileName, directory: "document", type: nil) as! String, encoding: NSUTF8StringEncoding)
+    }
+    
+    /**
+     读取JSON类型文件
      - Note: 文件存放于main bundle中
      - Parameter fileName: 文件名
      - Returns: 文件中的数据
@@ -69,7 +79,7 @@ public class PFFile: NSObject {
     }
     
     /**
-     读取XML文件
+     读取XML类型文件
      - Note: 文件存放于main bundle中
      - Parameter fileName: 文件名
      - Returns: 文件中的数据
