@@ -7,7 +7,7 @@
 //
 //  https://github.com/PFei-He/PFSwift
 //
-//  vesion: 0.1.3
+//  vesion: 0.1.4
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -45,6 +45,7 @@ public class PFFile: NSObject {
         let manager = NSFileManager.defaultManager()
         if !manager.fileExistsAtPath(path) {//如果文件不存在则创建文件
             manager.createFileAtPath(path, contents:nil, attributes:nil)
+            writeToFile(fileName, params: ["": ""])
         }
     }
     
@@ -55,7 +56,7 @@ public class PFFile: NSObject {
      - Returns: 文件中的数据
      */
     public class func readDictionary(fileName: String) -> Dictionary<String, AnyObject> {
-        return NSDictionary(contentsOfFile: readFile(fileName, directory: "document", type: nil) as! String)! as! Dictionary<String, AnyObject>
+        return NSDictionary(contentsOfFile: readFile(fileName, directory: "document", type: nil) as! String) as! Dictionary<String, AnyObject>
     }
     
     /**
@@ -97,6 +98,20 @@ public class PFFile: NSObject {
      */
     public class func writeToFile(fileName: String, params: Dictionary<String, AnyObject>) -> Bool {
         return (params as NSDictionary).writeToFile(PFFile.readFile(fileName, directory: "document", type: nil) as! String, atomically: true)
+    }
+    
+    /**
+     往文件中添加参数
+     - Note: 文件存放于沙盒中的Documents文件夹中
+     - Parameter fileName: 文件名
+     - Parameter params: 写入文件的参数
+     - Returns: 写入结果
+     */
+    public class func file(fileName: String, setParams params: Dictionary<String, AnyObject>) -> Bool {
+        var dictionary = readDictionary(fileName)
+        dictionary.removeValueForKey("")
+        dictionary.addEntries(params)
+        return PFFile.writeToFile(fileName, params: dictionary)
     }
     
     ///读取资源包文件或沙盒文件
