@@ -7,7 +7,7 @@
 //
 //  https://github.com/PFei-He/PFSwift
 //
-//  vesion: 0.1.4
+//  vesion: 0.1.5
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -45,7 +45,7 @@ public class PFFile: NSObject {
         let manager = NSFileManager.defaultManager()
         if !manager.fileExistsAtPath(path) {//如果文件不存在则创建文件
             manager.createFileAtPath(path, contents:nil, attributes:nil)
-            writeToFile(fileName, params: ["": ""])
+            writeToFile(fileName, params: Dictionary<String, AnyObject>())
         }
     }
     
@@ -56,7 +56,9 @@ public class PFFile: NSObject {
      - Returns: 文件中的数据
      */
     public class func readDictionary(fileName: String) -> Dictionary<String, AnyObject> {
-        return NSDictionary(contentsOfFile: readFile(fileName, directory: "document", type: nil) as! String) as! Dictionary<String, AnyObject>
+        var dictionary = NSDictionary(contentsOfFile: readFile(fileName, directory: "document", type: nil) as! String) as! Dictionary<String, AnyObject>
+        dictionary.removeValueForKey("")
+        return dictionary
     }
     
     /**
@@ -66,6 +68,8 @@ public class PFFile: NSObject {
      - Returns: 文件中的数据
      */
     public class func readString(fileName: String) -> String {
+        var dictionary = NSDictionary(contentsOfFile: readFile(fileName, directory: "document", type: nil) as! String) as! Dictionary<String, AnyObject>
+        dictionary.removeValueForKey("")
         return try! String(contentsOfFile: readFile(fileName, directory: "document", type: nil) as! String, encoding: NSUTF8StringEncoding)
     }
     
@@ -87,6 +91,16 @@ public class PFFile: NSObject {
      */
     public class func readXML(fileName: String) -> NSData {
         return readFile(fileName, directory: "bundle", type: "xml") as! NSData
+    }
+    
+    /**
+     读取文件的路径
+     - Note: 文件存放于沙盒中的Documents文件夹中
+     - Parameter fileName: 文件名
+     - Returns: 文件路径
+     */
+    public class func readPath(fileName: String) -> String {
+        return readFile(fileName, directory: "document", type: nil) as! String
     }
     
     /**
@@ -112,6 +126,20 @@ public class PFFile: NSObject {
         dictionary.removeValueForKey("")
         dictionary.addEntries(params)
         return PFFile.writeToFile(fileName, params: dictionary)
+    }
+    
+    /**
+     创建文件
+     - Note: 文件存放于沙盒中的Documents文件夹中
+     - Parameter fileName: 文件名
+     - Returns: 无
+     */
+    public class func removeFile(fileName: String) {
+        let path = readFile(fileName, directory: "document", type: nil) as! String
+        let manager = NSFileManager.defaultManager()
+        if manager.fileExistsAtPath(path) {//如果文件存在则删除文件
+            try! manager.removeItemAtPath(path)
+        }
     }
     
     ///读取资源包文件或沙盒文件
