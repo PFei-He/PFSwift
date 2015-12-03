@@ -1,3 +1,4 @@
+![logo](https://github.com/PFei-He/PFSwift/blob/master/PFSwift.png)
 [PFSwift](https://github.com/PFei-He/PFSwift)
 ===
 
@@ -9,7 +10,7 @@
 
 版本
 ---
-0.1.6
+0.1.7
 
 说明
 ---
