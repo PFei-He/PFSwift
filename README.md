@@ -10,11 +10,12 @@
 
 版本
 ---
-0.1.7
+0.1.8
 
 说明
 ---
 #### Extension
+* `PFAlertView` - UIAlertView扩展
 * `PFDate` - NSDate扩展
 * `PFDictionary` - Dictionary扩展
 * `PFString` - String扩展

@@ -7,7 +7,7 @@
 //
 //  https://github.com/PFei-He/PFSwift
 //
-//  vesion: 0.1.7
+//  vesion: 0.1.8
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -40,7 +40,7 @@ extension Dictionary {
      - Parameter dictionary: 需要拼接的字典
      - Returns: 无
      */
-    mutating func addEntries<K, V>(dictionary: [K: V]){
+    public mutating func addEntries<K, V>(dictionary: [K: V]){
         for (k, v) in dictionary {
             self.updateValue(v as! Value, forKey: k as! Key)
         }

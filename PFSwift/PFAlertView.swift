@@ -1,8 +1,8 @@
 //
-//  PFTimer.swift
+//  PFAlertView.swift
 //  PFSwift
 //
-//  Created by PFei_He on 15/11/24.
+//  Created by PFei_He on 15/12/4.
 //  Copyright © 2015年 PF-Lib. All rights reserved.
 //
 //  https://github.com/PFei-He/PFSwift
@@ -27,52 +27,31 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 //
-//  ***** NSTimer扩展 *****
+//  ***** UIAlertView扩展 *****
 //
 
-import Foundation
+import UIKit
 
-extension NSTimer {
+extension UIAlertView {
     
     /**
-     暂停计时器
+     显示警告
      - Note: 无
-     - Parameter 无
+     - Parameter titles: 所有的标题，第0个为警告的标题，其余为按钮标题
+     - Parameter message: 提示内容
+     - Parameter target: 执行方法的对象
      - Returns: 无
      */
-    public func pause() {
-        if !valid {//若计时器无效则返回
-            return;
+    public class func show(titles: Array<String>, message: String?, target: AnyObject?) {
+        let alertView = UIAlertView()
+        alertView.title = titles[0]
+        alertView.message = message
+        alertView.delegate = target
+        if titles.count > 1 {
+            for string in titles[1...titles.endIndex-1] {
+                alertView.addButtonWithTitle(string)
+            }
         }
-        //设置计时器运行时间为未来时间，则暂停了计时器
-        fireDate = NSDate.distantFuture()
-    }
-    
-    /**
-     恢复计时器
-     - Note: 无
-     - Parameter 无
-     - Returns: 无
-     */
-    public func resume() {
-        if !valid {//若计时器无效则返回
-            return;
-        }
-        //设置计时器运行时间为当前时间，则立即运行计时器
-        fireDate = NSDate()
-    }
-    
-    /**
-     指定时间间隔后恢复计时器
-     - Note: 无
-     - Parameter timeInterval: 时间间隔
-     - Returns: 无
-     */
-    public func resumeAfterTimeInterval(timeInterval: NSTimeInterval) {
-        if !valid {//若计时器无效则返回
-            return;
-        }
-        //设置计时器运行时间为指定的间隔时长
-        fireDate = NSDate(timeIntervalSinceNow: timeInterval)
+        alertView.show()
     }
 }

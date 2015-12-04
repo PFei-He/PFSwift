@@ -7,7 +7,7 @@
 //
 //  https://github.com/PFei-He/PFSwift
 //
-//  vesion: 0.1.7
+//  vesion: 0.1.8
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -163,7 +163,6 @@ public class PFModel: NSObject, NSXMLParserDelegate {
                 }
             }
         }
-        
         //释放对象
         free(list)
         
