@@ -15,19 +15,19 @@
 说明
 ---
 #### Extension
-* `PFAlertView` - UIAlertView扩展
-* `PFDate` - NSDate扩展
-* `PFDictionary` - Dictionary扩展
-* `PFString` - String扩展
-* `PFTimer` - NSTimer扩展
-* `PFView` - UIView扩展
+* `PFAlertView`     - UIAlertView扩展
+* `PFDate`          - NSDate扩展
+* `PFDictionary`    - Dictionary扩展
+* `PFString`        - String扩展
+* `PFTimer`         - NSTimer扩展
+* `PFView`          - UIView扩展
 
 #### Framework
-* `PFFile` - 实现文件生成和读写功能
-* `PFModel` - 数据模型基类
-* `PFQRCode` - 利用AVFoundation框架生成二维码
-* `PFScanner` - 扫描器
-* `PFTime` - 实现时间获取和转换功能
+* `PFFile`          - 实现文件生成和读写功能
+* `PFModel`         - 数据模型基类
+* `PFQRCode`        - 利用AVFoundation框架生成二维码
+* `PFScanner`       - 扫描器
+* `PFTime`          - 实现时间获取和转换功能
 
 安装
 ---
