@@ -7,7 +7,7 @@
 //
 //  https://github.com/PFei-He/PFSwift
 //
-//  vesion: 0.1.8
+//  vesion: 0.1.9
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -153,7 +153,6 @@ public class PFModel: NSObject, NSXMLParserDelegate {
         var array = Array<String>()
         if list != nil {
             for i in 0...(Int(count) - 1) {
-                
                 //获取属性名
                 let key = String(UTF8String: property_getName(list[i]))
                 
