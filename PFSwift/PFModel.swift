@@ -155,7 +155,7 @@ public class PFModel: NSObject, NSXMLParserDelegate {
             for i in 0...(Int(count) - 1) {
                 //获取属性名
                 let key = String(UTF8String: property_getName(list[i]))
-                print(key)
+
                 //将属性放入到数组中
                 if key != nil {
                     array.append(key!)
