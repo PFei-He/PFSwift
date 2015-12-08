@@ -7,7 +7,7 @@
 //
 //  https://github.com/PFei-He/PFSwift
 //
-//  vesion: 0.2.0
+//  vesion: 0.2.1
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -45,7 +45,11 @@ public class PFModel: NSObject, NSXMLParserDelegate {
             return _JSON
         } set {
             _JSON = newValue
-            parseJSON(newValue)
+            
+            //解析JSON
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) { [unowned self] () -> Void in
+                self.parseJSON(newValue)
+            }
         }
     }
     private var _JSON: AnyObject!
@@ -56,7 +60,11 @@ public class PFModel: NSObject, NSXMLParserDelegate {
             return _XML
         } set {
             _XML = newValue
-            parseXML(newValue)
+            
+            //解析XML
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) { [unowned self] () -> Void in
+                self.parseXML(newValue)
+            }
         }
     }
     private var _XML: AnyObject!
