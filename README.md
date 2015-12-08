@@ -10,7 +10,7 @@
 
 版本
 ---
-0.1.9
+0.2.0
 
 说明
 ---
@@ -40,7 +40,7 @@
 ```
 platform:ios, '8.0'
 use_frameworks!
-pod 'PFSwift', '~> 0.1'
+pod 'PFSwift', '~> 0.2'
 ```
 ###### 注意
 由于CocoaPods对Swift的最低支持版本为iOS8.0，如要兼容iOS7.0+，只能手动拖入到工程中使用

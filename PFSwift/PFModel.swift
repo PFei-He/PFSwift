@@ -7,7 +7,7 @@
 //
 //  https://github.com/PFei-He/PFSwift
 //
-//  vesion: 0.1.9
+//  vesion: 0.2.0
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -155,7 +155,7 @@ public class PFModel: NSObject, NSXMLParserDelegate {
             for i in 0...(Int(count) - 1) {
                 //获取属性名
                 let key = String(UTF8String: property_getName(list[i]))
-                
+                print(key)
                 //将属性放入到数组中
                 if key != nil {
                     array.append(key!)
@@ -165,7 +165,19 @@ public class PFModel: NSObject, NSXMLParserDelegate {
         //释放对象
         free(list)
         
-        return dictionaryWithValuesForKeys(array)
+        //去除空值
+        let dictionary = dictionaryWithValuesForKeys(array)
+        var JSON = Dictionary<String, AnyObject>()
+        for string in dictionary.keys {
+            if dictionary[string] is NSNull {
+                JSON.updateValue("", forKey: string)
+            } else {
+                JSON.updateValue(dictionary[string]!, forKey: string)
+            }
+        }
+        
+        //返回JSON对象
+        return JSON
     }
 
     // MARK: - NSXMLParserDelegate Methods
