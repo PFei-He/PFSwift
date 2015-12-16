@@ -7,7 +7,7 @@
 //
 //  https://github.com/PFei-He/PFSwift
 //
-//  vesion: 0.2.2
+//  vesion: 0.2.3
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -46,6 +46,22 @@ public class PFFile: NSObject {
         if !manager.fileExistsAtPath(path) {//如果文件不存在则创建文件
             manager.createFileAtPath(path, contents:nil, attributes:nil)
             file(fileName, setParams: Dictionary<String, AnyObject>())
+        }
+    }
+    
+    /**
+     创建文件
+     - Note: 文件存放于沙盒中的Documents文件夹中
+     - Parameter fileName: 文件名
+     - Parameter params: 写入的参数
+     - Returns: 无
+     */
+    public class func create(fileName: String, params: Dictionary<String, AnyObject>) {
+        let path = read(fileName, directory: "document", type: nil) as! String
+        let manager = NSFileManager.defaultManager()
+        if !manager.fileExistsAtPath(path) {//如果文件不存在则创建文件
+            manager.createFileAtPath(path, contents:nil, attributes:nil)
+            file(fileName, setParams: params)
         }
     }
     
