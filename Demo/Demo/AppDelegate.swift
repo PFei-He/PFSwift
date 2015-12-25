@@ -36,7 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         //从文件中读取JSON
-        Person.sharedInstance().JSON = PFFile.read(JSON: "person")
+        Person.sharedInstance().JSON = PFFile.readJSONWithName("person")
         
         return true
     }
