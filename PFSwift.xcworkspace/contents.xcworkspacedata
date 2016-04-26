@@ -8,9 +8,6 @@
          location = "container:"
          name = "Extension">
          <FileRef
-            location = "group:PFSwift/PFAlertView.swift">
-         </FileRef>
-         <FileRef
             location = "group:PFSwift/PFDate.swift">
          </FileRef>
          <FileRef
