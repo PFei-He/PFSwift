@@ -25,7 +25,6 @@
 		4575791B1C0409EF004BC1B6 /* PFTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4575791A1C0409EF004BC1B6 /* PFTimer.swift */; };
 		457B578F1C0069A30033B62A /* PFDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457B578E1C0069A30033B62A /* PFDictionary.swift */; };
 		457B57911C0069EF0033B62A /* person.xml in Resources */ = {isa = PBXBuildFile; fileRef = 457B57901C0069EF0033B62A /* person.xml */; };
-		45E299321C11F35E00EDA7A7 /* PFAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E299311C11F35E00EDA7A7 /* PFAlertView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,7 +48,6 @@
 		4575791A1C0409EF004BC1B6 /* PFTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PFTimer.swift; sourceTree = "<group>"; };
 		457B578E1C0069A30033B62A /* PFDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PFDictionary.swift; sourceTree = "<group>"; };
 		457B57901C0069EF0033B62A /* person.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = person.xml; sourceTree = "<group>"; };
-		45E299311C11F35E00EDA7A7 /* PFAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PFAlertView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,7 +76,6 @@
 		454B36FC1BFEB59600FA085C /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				45E299311C11F35E00EDA7A7 /* PFAlertView.swift */,
 				454B37031BFEB5D400FA085C /* PFDate.swift */,
 				457B578E1C0069A30033B62A /* PFDictionary.swift */,
 				454B37041BFEB5D400FA085C /* PFString.swift */,
@@ -259,7 +256,6 @@
 				454B37111BFEB5DF00FA085C /* PFScanner.swift in Sources */,
 				456226101BF57CE2008202A7 /* RootViewController.swift in Sources */,
 				454B37071BFEB5D400FA085C /* PFString.swift in Sources */,
-				45E299321C11F35E00EDA7A7 /* PFAlertView.swift in Sources */,
 				456225F01BF57C94008202A7 /* AppDelegate.swift in Sources */,
 				454B37121BFEB5DF00FA085C /* PFTime.swift in Sources */,
 				454B37081BFEB5D400FA085C /* PFView.swift in Sources */,
