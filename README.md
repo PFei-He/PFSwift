@@ -10,10 +10,13 @@
 
 版本
 ---
-0.4.0
+0.4.1
 
 说明
 ---
+#### Debug
+* `PFSwiftDebug`    - 调试
+
 #### Extension
 * `PFDate`          - NSDate扩展
 * `PFDictionary`    - Dictionary扩展

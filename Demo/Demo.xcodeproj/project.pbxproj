@@ -25,6 +25,7 @@
 		4575791B1C0409EF004BC1B6 /* PFTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4575791A1C0409EF004BC1B6 /* PFTimer.swift */; };
 		457B578F1C0069A30033B62A /* PFDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457B578E1C0069A30033B62A /* PFDictionary.swift */; };
 		457B57911C0069EF0033B62A /* person.xml in Resources */ = {isa = PBXBuildFile; fileRef = 457B57901C0069EF0033B62A /* person.xml */; };
+		459B9D941CE332C1001FCFFA /* PFSwiftDebug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459B9D931CE332C1001FCFFA /* PFSwiftDebug.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		4575791A1C0409EF004BC1B6 /* PFTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PFTimer.swift; sourceTree = "<group>"; };
 		457B578E1C0069A30033B62A /* PFDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PFDictionary.swift; sourceTree = "<group>"; };
 		457B57901C0069EF0033B62A /* person.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = person.xml; sourceTree = "<group>"; };
+		459B9D931CE332C1001FCFFA /* PFSwiftDebug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PFSwiftDebug.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,9 +168,18 @@
 			path = Resource;
 			sourceTree = "<group>";
 		};
+		459B9D921CE332A4001FCFFA /* Debug */ = {
+			isa = PBXGroup;
+			children = (
+				459B9D931CE332C1001FCFFA /* PFSwiftDebug.swift */,
+			);
+			name = Debug;
+			sourceTree = "<group>";
+		};
 		45FCA1491BFE188900EC63E7 /* PFSwift */ = {
 			isa = PBXGroup;
 			children = (
+				459B9D921CE332A4001FCFFA /* Debug */,
 				454B36FC1BFEB59600FA085C /* Extension */,
 				454B36FB1BFEB59100FA085C /* Framework */,
 			);
@@ -250,6 +261,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				456226121BF57CEF008202A7 /* RootModel.swift in Sources */,
+				459B9D941CE332C1001FCFFA /* PFSwiftDebug.swift in Sources */,
 				457B578F1C0069A30033B62A /* PFDictionary.swift in Sources */,
 				4575791B1C0409EF004BC1B6 /* PFTimer.swift in Sources */,
 				454B370E1BFEB5DF00FA085C /* PFFile.swift in Sources */,

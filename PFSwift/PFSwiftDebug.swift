@@ -1,9 +1,9 @@
 //
-//  PFTimer.swift
+//  PFSwiftDebug.swift
 //  PFSwift
 //
-//  Created by PFei_He on 15/11/24.
-//  Copyright © 2015年 PF-Lib. All rights reserved.
+//  Created by PFei_He on 16/5/11.
+//  Copyright © 2016年 PF-Lib. All rights reserved.
 //
 //  https://github.com/PFei-He/PFSwift
 //
@@ -25,52 +25,20 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 //
-//  ***** NSTimer扩展 *****
+//  ***** 调试 *****
 //
 
-import Foundation
+import UIKit
 
-extension NSTimer {
-    
+public class PFSwiftDebug: NSObject {
+
     /**
-     暂停计时器
+     版本号
      - Note: 无
      - Parameter 无
-     - Returns: 无
+     - Returns: 版本号
      */
-    public func pause() {
-        if !valid {//若计时器无效则返回
-            return;
-        }
-        //设置计时器运行时间为未来时间，则暂停了计时器
-        fireDate = NSDate.distantFuture()
-    }
-    
-    /**
-     恢复计时器
-     - Note: 无
-     - Parameter 无
-     - Returns: 无
-     */
-    public func resume() {
-        if !valid {//若计时器无效则返回
-            return;
-        }
-        //设置计时器运行时间为当前时间，则立即运行计时器
-        fireDate = NSDate()
-    }
-    
-    /**
-     指定时间间隔后恢复计时器
-     - Note: 无
-     - Parameter timeInterval: 时间间隔
-     - Returns: 无
-     */
-    public func resumeAfterTimeInterval(timeInterval: NSTimeInterval) {
-        if !valid {//若计时器无效则返回
-            return;
-        }
-        //设置计时器运行时间为指定的间隔时长
-        fireDate = NSDate(timeIntervalSinceNow: timeInterval)
+    public class func version() -> String {
+        return "[ PFSwift ] current version: 0.4.1"
     }
 }

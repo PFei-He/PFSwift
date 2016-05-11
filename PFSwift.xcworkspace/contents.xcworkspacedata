@@ -6,6 +6,13 @@
       name = "PFSwift">
       <Group
          location = "container:"
+         name = "Debug">
+         <FileRef
+            location = "group:PFSwift/PFSwiftDebug.swift">
+         </FileRef>
+      </Group>
+      <Group
+         location = "container:"
          name = "Extension">
          <FileRef
             location = "group:PFSwift/PFDate.swift">
